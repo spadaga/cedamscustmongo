@@ -11,18 +11,18 @@ const amsusersRoutes = require('./routes/amsuserRoutes'); // Import amsusers rou
 
 const app = express();
 
-  // Create the logs directory if it doesn't exist
-  const logsDir = path.join(__dirname, 'logs');
-  if (!fs.existsSync(logsDir)) {
-    fs.mkdirSync(logsDir);
-  }
+//   // Create the logs directory if it doesn't exist
+//   const logsDir = path.join(__dirname, 'logs');
+//   if (!fs.existsSync(logsDir)) {
+//     fs.mkdirSync(logsDir);
+//   }
 
 
-// Create a write stream for logging (append mode)
-const accessLogStream = fs.createWriteStream(
-  path.join(logsDir, 'access.log'),
-  { flags: 'a' }
-);
+// // Create a write stream for logging (append mode)
+// const accessLogStream = fs.createWriteStream(
+//   path.join(logsDir, 'access.log'),
+//   { flags: 'a' }
+// );
 
 
 
@@ -30,7 +30,16 @@ const accessLogStream = fs.createWriteStream(
 app.use(cors());
 app.use(express.json());
 // Logging middleware (log to file)
-app.use(morgan('combined', { stream: accessLogStream }));
+//app.use(morgan('combined', { stream: accessLogStream }));
+
+// Use console logging instead of writing to a file (Vercel does not allow file writing)
+app.use(morgan('combined')); // Logs requests to console
+
+
+// Default route (root)
+app.get('/', (req, res) => {
+  res.send('Welcome to the Employee API! 🚀');
+});
 
 // Routes
 app.use('/api/employees', employeeRoutes);
