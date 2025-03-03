@@ -41,6 +41,20 @@ app.get('/', (req, res) => {
   res.send('Welcome to the Employee API! 🚀');
 });
 
+// Redirect from / to /register
+// Home route
+app.get('/emp', (req, res) => {
+  res.redirect('/api/employees/getallemployees');
+});
+
+app.get('/amsusers', (req, res) => {
+  res.redirect('/api/amsusers/getAllAmsusers');
+});
+
+app.get('/tooldata', (req, res) => {
+  res.redirect('/api/tooldata');
+});
+
 // Routes
 app.use('/api/employees', employeeRoutes);
 app.use('/api/amsusers', amsusersRoutes); // Use amsusers routes
