@@ -41,4 +41,13 @@ app.use('/api/tooldata', tooldataRoutes); // Use tooldata routes
 app.use(errorHandler);
 
 
+const corsOptions = {
+  origin: '*', // Allow all origins (or specify your frontend URL)
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+app.use(cors(corsOptions));
+
+
 module.exports = app;
