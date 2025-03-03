@@ -14,7 +14,10 @@ console.log('MONGODB_URI:', process.env.MONGO_URI);
 
 const connectDB = async () => {
     try {
-        await mongoose.connect(process.env.MONGO_URI);
+        await mongoose.connect(process.env.MONGO_URI ,{
+          serverSelectionTimeoutMS: 5000, // Timeout after 5s if MongoDB is unreachable
+          socketTimeoutMS: 45000, // Close sockets after 45s of inactivity
+        });
       console.log('Connected to MongoDB');
     } catch (error) {
       console.error('MongoDB connection error:', error);
