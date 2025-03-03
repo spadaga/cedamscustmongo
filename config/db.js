@@ -24,5 +24,9 @@ const connectDB = async () => {
       process.exit(1); // Exit process with failure
     }
   };
-
+// Handle database disconnections
+mongoose.connection.on('disconnected', () => {
+  console.warn('⚠️ MongoDB disconnected. Retrying...');
+  connectDB(); // Attempt reconnection
+});
 module.exports = connectDB;
