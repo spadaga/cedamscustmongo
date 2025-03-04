@@ -31,4 +31,4 @@ const ToolDataSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 // Ensure collection name is 'tooldatas' (plural form)
-module.exports = mongoose.model('ToolData', ToolDataSchema, 'tooldatas');
+module.exports = mongoose.model('ToolData', ToolDataSchema, 'tooldata');

@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const employeeRoutes = require('./routes/employeeRoutes');
 const errorHandler = require('./middlewares/errorHandler');
-const tooldataRoutes = require('./routes/tooldata');
+const tooldataRoutes = require('./routes/tooldataRoutes');
 const morgan = require('morgan');
 const fs = require('fs');
 const path = require('path');
@@ -52,7 +52,7 @@ app.get('/amsusers', (req, res) => {
 });
 
 app.get('/tooldata', (req, res) => {
-  res.redirect('/api/tooldata');
+  res.redirect('/api/tooldata/gettooldata');
 });
 
 // Routes
