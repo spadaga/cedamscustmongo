@@ -9,6 +9,9 @@ const path = require('path');
 
 const amsusersRoutes = require('./routes/amsuserRoutes'); // Import amsusers routes
 
+const orderRoutes = require('./routes/orderRoutes'); // Import order routes
+
+
 const app = express();
 
 //   // Create the logs directory if it doesn't exist
@@ -55,10 +58,19 @@ app.get('/tooldata', (req, res) => {
   res.redirect('/api/tooldata/gettooldata');
 });
 
+app.get('/orders', (req, res) => {
+  res.redirect('/api/orders/getorders');
+});
+
+
+
 // Routes
 app.use('/api/employees', employeeRoutes);
 app.use('/api/amsusers', amsusersRoutes); // Use amsusers routes
 app.use('/api/tooldata', tooldataRoutes); // Use tooldata routes
+app.use('/api/orders', orderRoutes); // Use order routes
+
+
 
 // Error handling middleware
 app.use(errorHandler);
