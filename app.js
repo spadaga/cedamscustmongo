@@ -11,6 +11,8 @@ const amsusersRoutes = require('./routes/amsuserRoutes'); // Import amsusers rou
 
 const orderRoutes = require('./routes/orderRoutes'); // Import order routes
 
+const toolMgrSettingsRoutes = require('./routes/toolmgrsettingsRoutes'); // Import toolMgrSettings routes
+
 
 const app = express();
 
@@ -63,12 +65,18 @@ app.get('/orders', (req, res) => {
 });
 
 
+app.get('/tooldatasetings', (req, res) => {
+  res.redirect('/api/toolMgrSettings/getAllSettings');
+});
+
 
 // Routes
 app.use('/api/employees', employeeRoutes);
 app.use('/api/amsusers', amsusersRoutes); // Use amsusers routes
 app.use('/api/tooldata', tooldataRoutes); // Use tooldata routes
 app.use('/api/orders', orderRoutes); // Use order routes
+app.use('/api/toolMgrSettings', toolMgrSettingsRoutes); // Use toolMgrSettings routes
+
 
 
 
