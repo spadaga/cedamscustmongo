@@ -12,7 +12,8 @@ const amsusersRoutes = require('./routes/amsuserRoutes'); // Import amsusers rou
 const orderRoutes = require('./routes/orderRoutes'); // Import order routes
 
 const toolMgrSettingsRoutes = require('./routes/toolmgrsettingsRoutes'); // Import toolMgrSettings routes
-
+const amsCatalogRoutes = require('./routes/amsCatalogRoutes'); // Import amsCatalog routes (Add this line)
+const secondaryInventoryRoutes = require('./routes/secondaryInventoryRoutes'); // 
 
 const app = express();
 
@@ -70,12 +71,25 @@ app.get('/tooldatasetings', (req, res) => {
 });
 
 
+
+app.get('/amscatalogs', (req, res) => { //add this line
+  res.redirect('/api/amscatalogs/getAllAMSCatalogs');
+});
+
+app.get('/invsecondary', (req, res) => { //add this line
+  res.redirect('/api/secondaryinventory/getAllSecondaryInventory');
+});
+
 // Routes
 app.use('/api/employees', employeeRoutes);
 app.use('/api/amsusers', amsusersRoutes); // Use amsusers routes
 app.use('/api/tooldata', tooldataRoutes); // Use tooldata routes
 app.use('/api/orders', orderRoutes); // Use order routes
 app.use('/api/toolMgrSettings', toolMgrSettingsRoutes); // Use toolMgrSettings routes
+app.use('/api/amscatalogs', amsCatalogRoutes); // Use amsCatalog routes (add this line)
+// Use the SecondaryInventory routes
+app.use('/api/secondaryinventory', secondaryInventoryRoutes);  // Mount the router
+
 
 
 
