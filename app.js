@@ -15,6 +15,8 @@ const toolMgrSettingsRoutes = require('./routes/toolmgrsettingsRoutes'); // Impo
 const amsCatalogRoutes = require('./routes/amsCatalogRoutes'); // Import amsCatalog routes (Add this line)
 const secondaryInventoryRoutes = require('./routes/secondaryInventoryRoutes'); // 
 
+const glcustomerRoutes = require('./routes/glcustomerRoutes'); // 
+
 const app = express();
 
 //   // Create the logs directory if it doesn't exist
@@ -80,6 +82,11 @@ app.get('/invsecondary', (req, res) => { //add this line
   res.redirect('/api/secondaryinventory/getAllSecondaryInventory');
 });
 
+
+app.get('/glcustomers', (req, res) => { //add this line
+  res.redirect('/api/glcustomers/getglAllCustomers');
+});
+
 // Routes
 app.use('/api/employees', employeeRoutes);
 app.use('/api/amsusers', amsusersRoutes); // Use amsusers routes
@@ -89,6 +96,8 @@ app.use('/api/toolMgrSettings', toolMgrSettingsRoutes); // Use toolMgrSettings r
 app.use('/api/amscatalogs', amsCatalogRoutes); // Use amsCatalog routes (add this line)
 // Use the SecondaryInventory routes
 app.use('/api/secondaryinventory', secondaryInventoryRoutes);  // Mount the router
+
+app.use('/api/glcustomers', glcustomerRoutes);  // Mount the router
 
 
 
